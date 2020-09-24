@@ -1,0 +1,77 @@
+﻿@model CardView
+@{
+    string strTitle = "Мой город";
+    ViewBag.Title = strTitle;
+}
+
+<div class="main_block_bg">
+    <div class="main_block_inner">
+
+        <div class="start_block">
+            <h1>Город Калуга</h1>
+            <span id="start_block_span">
+                Оставь заявку, сообщи о проблеме
+            </span>
+            <div class="start_block_btn">
+                <div class="btn314">
+                    <a id="start_block_btn_span" asp-area="" asp-controller="Card" asp-action="New" asp-route-id="">Оставить заявку</a>
+                </div>
+                <a id="start_block_btn_spanMore" href="#">Подробнее</a>
+            </div>
+        </div>
+        <div class="btn380 viewResult">
+            <a id="viewResult_span" href="#">
+                Посмотреть результаты
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="result_block">
+    <div class="wrapper">
+        <div class="result_block_inner">
+            <h2>Результаты работы проекта</h2>
+
+            
+                <div class="result_block_inner">
+                
+                       
+                        <div class="result_block_item">
+                            <h3></h3>
+                            <div class="result_block_item_card_num">
+                                <p class="card_num_name">Номер заявки:</p>
+                                <span class="card_num_num"></span>
+
+                            </div>
+
+                            <div class="result_block_item_photo_block">
+                                <div class="photo">
+                                    Было
+                                    <img id="1" src="~/images/@ViewBag.IDD">
+                                </div>
+
+
+                                <div class="photo">
+                                    Стало
+                                    <img src="~/images/Kaluga1.png">
+                                </div>
+                            </div>
+
+                            <div class="result_block_item_footer">
+                                <div class="result_block_item_footer_status">
+                                    Статус заявки
+                                </div>
+                                <div class="result_block_item_footer_btn">
+                                    <div class="btn314 viewMore">
+                                        <a asp-area="" asp-controller="Card" asp-action="VievMore" asp-route-id="@Model.ID">Узнать подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+    </div>
+</div>
