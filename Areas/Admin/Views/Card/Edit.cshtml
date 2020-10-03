@@ -1,0 +1,62 @@
+﻿@model Card
+@{
+    ViewBag.Title = "Редактирование заявки";
+}
+<div class="new_main_block">
+    <div class="new_main_block_inner">
+        <h1>Заявка</h1>
+        <form asp-area="Admin" asp-controller="Card" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div class="new_form">
+                <input type="hidden" asp-for="ID" />
+                <input type="hidden" asp-for="DateAdded" />
+                <div asp-validation-summary="All"></div>
+                <div class="new_form_col">
+                    <div class="new_form_item">
+                        <div class="new_form_item_head">
+                            Выберите тему обращения
+                        </div>
+                        <input asp-for="TypeID" class="new_form_item_body">
+                    </div>
+                    <div class="new_form_item">
+                        <div class="new_form_item_head">
+                            Подробное описание проблемы поможет быстрее её решить
+                        </div>
+                        <textarea class="new_form_item_body" id="new_form_text">
+						    </textarea>
+                    </div>
+                    <div class="new_form_item">
+                        <div class="new_form_item_head">
+                            Фотографии позволят лучше понять проблему
+                        </div>
+                        <input type="file" name="CardFile" id="CardFile">
+                    </div>
+                </div>
+
+                <div class="new_form_col">
+                    <div class="new_form_item">
+                        <div id="info" class="new_form_item_head">
+                            Можно отметить место на карте
+                        </div>
+                        <div id="map" class="new_form_map">
+
+                        </div>
+                    </div>
+                    <div class="new_form_item new_form_item_adr">
+                        <div class="new_form_item_head">
+                            или написать адрес (приблизительный ориентир)
+                        </div>
+                        <input asp-for="Address" class="new_form_item_body">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="submit_new_form">
+                <div class="btn314">
+                    <button type="submit" class="btn314" href="/Card/New">Измениить</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

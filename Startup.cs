@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using City.Domain.Repositories.Abstract;
+using City.Domain.Repositories.EntityFramework;
 
 namespace City
 {
@@ -25,6 +27,10 @@ namespace City
             //Связывание файла конфигурации через класс config
             Configuration.Bind("Project", new Config());
 
+            services.AddTransient<ICardRepository, EFCardRepository>();
+            services.AddTransient<IContactorRepository, EFContactorRepository>();
+            services.AddTransient<IStatusRepository, EFStatusRepository>();
+            services.AddTransient<DataManager>();
 
             //подкльчение контекста базы данных
             services.AddDbContext<AppDBContext>(x => x.UseSqlServer(Config.ConnectionString));
@@ -48,6 +54,7 @@ namespace City
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("admin", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }

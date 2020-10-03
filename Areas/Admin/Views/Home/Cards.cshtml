@@ -1,0 +1,45 @@
+﻿@model IQueryable<Card>
+@{
+    string strTitle = "Администратор ппвнель";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    @await Html.PartialAsync("AdminMenuPartial")
+    @if (Model.Any())
+    {
+        <div class="wrapper">
+            <div class="result_block_inner">
+                <table border="1">
+                    <tr>
+                        <td>Id</td>
+                        <td>Описание</td>
+                        <td>Адрес</td>
+                        <td>Дата добавления</td>
+                        <td>Статус</td>
+                        <td>Ответственный</td>
+                        <td>Исполнитель</td>
+                        <td>Заявитель</td>
+                        <td>Срок исполнения</td>
+                    </tr>
+                    @foreach (Card card in Model)
+                    {
+                        <tr>
+                            <td>@card.ID</td>
+                            <td>@card.Text</td>
+                            <td>@card.Address</td>
+                            <td>@card.DateAdded</td>
+                            <td>@card.StatusID</td>
+                            <td>@card.ManagerID</td>
+                            <td>@card.ContractorID</td>
+                            <td>@card.UserID</td>
+                            <td>@card.EndDate</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    }
+</div>
+

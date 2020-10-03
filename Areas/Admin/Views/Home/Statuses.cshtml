@@ -1,0 +1,39 @@
+﻿@model IQueryable<Status>
+@{
+    string strTitle = "Администратор ппвнель";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    @await Html.PartialAsync("AdminMenuPartial")
+    
+<div class="wrapper">
+    @if (Model.Any())
+    {
+        <div class="result_block_inner">
+            <table border="1">
+                <tr>
+                    <td>Id</td>
+                    <td>Статус</td>
+                    <td>Описание</td>
+                    <td>Дата добавления</td>
+                </tr>
+                @foreach (Status card in Model)
+                {
+                    <tr>
+                        <td>@card.ID</td>
+                        <td>@card.Name</td>
+                        <td>@card.Description</td>
+                        <td>@card.DateAdded</td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    }
+    <a asp-area="Admin" asp-controller="Home" asp-action="Statuses" asp-route-act="Add">Добавить</a>
+</div>
+    
+</div>
+

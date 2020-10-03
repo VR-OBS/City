@@ -1,4 +1,4 @@
-﻿@model CardView
+﻿@model IQueryable<Card>
 @{
     string strTitle = "Мой город";
     ViewBag.Title = strTitle;
@@ -32,15 +32,24 @@
         <div class="result_block_inner">
             <h2>Результаты работы проекта</h2>
 
-            
+            @if (Model.Any())
+            {
                 <div class="result_block_inner">
-                
-                       
+                    @foreach (Card card in Model)
+                    {
+                        if (card.ID != null)
+                        {
+                            ViewBag.IDD = card.ID;
+                        }
+                        else
+                        {
+                            ViewBag.IDD = "Kaluga1.png";
+                        }
                         <div class="result_block_item">
-                            <h3></h3>
+                            <h3>@card.Address</h3>
                             <div class="result_block_item_card_num">
                                 <p class="card_num_name">Номер заявки:</p>
-                                <span class="card_num_num"></span>
+                                <span class="card_num_num">@card.ID</span>
 
                             </div>
 
@@ -63,14 +72,14 @@
                                 </div>
                                 <div class="result_block_item_footer_btn">
                                     <div class="btn314 viewMore">
-                                        <a asp-area="" asp-controller="Card" asp-action="VievMore" asp-route-id="@Model.ID">Узнать подробнее</a>
+                                        <a asp-area="" asp-controller="Card" asp-action="VievMore" asp-route-id="@card.ID">Узнать подробнее</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    
+                    }
                 </div>
-            
+            }
 
         </div>
     </div>
