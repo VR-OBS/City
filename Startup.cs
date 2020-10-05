@@ -30,6 +30,7 @@ namespace City
             services.AddTransient<ICardRepository, EFCardRepository>();
             services.AddTransient<IContactorRepository, EFContactorRepository>();
             services.AddTransient<IStatusRepository, EFStatusRepository>();
+            services.AddTransient<ITypeCardRepository, EFTypeCardRepository>();
             services.AddTransient<DataManager>();
 
             //подкльчение контекста базы данных

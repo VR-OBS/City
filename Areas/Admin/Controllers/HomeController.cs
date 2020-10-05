@@ -19,34 +19,18 @@ namespace City.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View(dataManager.Cards.GetCards());
+            return View();
         }
 
         public  IActionResult Cards()
         {
-            return View("Cards", dataManager.Cards.GetCards());
+            return View(dataManager.Cards.GetCards());
         }
 
-        public IActionResult Statuses(string act)
+        public IActionResult Statuses()
         {
-            if(act=="Add")
-            {
-                return View("AddEditStatus",new Status());
-            }
-            return View("Statuses", dataManager.Statuses.GetCards());
+            return View(dataManager.Statuses.GetCards());
         }
-
-        [HttpPost]
-        public IActionResult Statuses(Status card)
-        {
-            if (ModelState.IsValid)
-            {
-                dataManager.Statuses.SaveCard(card);
-                return RedirectToAction("Statuses", "Home");
-            }
-            return View(card);
-        }
-
 
 
     }

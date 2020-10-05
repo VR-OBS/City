@@ -1,4 +1,4 @@
-﻿@model IQueryable<Card>
+﻿
 @{ 
     string strTitle = "Администратор ппвнель";
     ViewBag.Title = strTitle;
@@ -7,58 +7,6 @@
 <div>
     <h2>@strTitle</h2>
     @await Html.PartialAsync("AdminMenuPartial")
-    @if (Model.Any())
-    {
-        <div class="wrapper">
-            <div class="result_block_inner">
-                @foreach (Card card in Model)
-                {
-                    if (card.ID != null)
-                    {
-                        ViewBag.IDD = card.ID;
-                    }
-                    else
-                    {
-                        ViewBag.ID = "Kaluga1.png";
-                    }
-                    <div class="result_block_item">
-                        <h3>@card.Address</h3>
-                        <div class="result_block_item_card_num">
-                            <p class="card_num_name">Номер заявки:</p>
-                            <span class="card_num_num">@card.ID</span>
 
-                        </div>
-
-                        <div class="result_block_item_photo_block">
-                            <div class="photo">
-                                Было
-                                <img id="1" src="~/images/@ViewBag.IDD">
-                            </div>
-
-
-                            <div class="photo">
-                                Стало
-                                <img src="~/images/Kaluga1.png">
-                            </div>
-                        </div>
-
-                        <div class="result_block_item_footer">
-                            <div class="result_block_item_footer_status">
-                                Статус заявки
-                            </div>
-                            <div class="result_block_item_footer_btn">
-                                <div class="btn314 viewMore">
-                                    <a asp-area="Admin" asp-controller="Card" asp-action="Edit" asp-route-id="@card.ID">Узнать подробнее</a>
-                                </div>
-                                <div class="btn314 viewMore">
-                                    <a asp-area="Admin" asp-controller="Card" asp-action="Delete" asp-route-id="@card.ID">Удалить</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    }
 </div>
  

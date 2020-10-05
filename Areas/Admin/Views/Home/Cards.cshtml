@@ -11,12 +11,17 @@
     {
         <div class="wrapper">
             <div class="result_block_inner">
+                <a asp-area="Admin" asp-controller="Card" asp-action="Edit" asp-route-id="">Добавить карточку</a>
                 <table border="1">
                     <tr>
                         <td>Id</td>
-                        <td>Описание</td>
-                        <td>Адрес</td>
                         <td>Дата добавления</td>
+                        <td>Тип заявки</td>
+                        <td>Описание</td>
+                        <td>X</td>
+                        <td>Y</td>                        
+                        <td>Адрес</td>
+                        <td>Фото</td>
                         <td>Статус</td>
                         <td>Ответственный</td>
                         <td>Исполнитель</td>
@@ -25,17 +30,22 @@
                     </tr>
                     @foreach (Card card in Model)
                     {
-                        <tr>
-                            <td>@card.ID</td>
-                            <td>@card.Text</td>
-                            <td>@card.Address</td>
-                            <td>@card.DateAdded</td>
-                            <td>@card.StatusID</td>
-                            <td>@card.ManagerID</td>
-                            <td>@card.ContractorID</td>
-                            <td>@card.UserID</td>
-                            <td>@card.EndDate</td>
-                        </tr>
+                <tr>
+                    <td>@card.ID</td>
+                    <td>@card.DateAdded</td>
+                    <td>@card.TypeCard.Name</td>
+                    <td>@card.Text</td>
+                    <td>@card.Pos_X</td>
+                    <td>@card.Pos_Y</td>
+                    <td>@card.Address</td>
+                    <td>@card.PhotoPath</td>
+                    <td>@card.Status.Name</td>
+                    <td>@card.ManagerID</td>
+                    <td>@card.Contractor.Name</td>
+                    <td>@card.UserID</td>
+                    <td>@card.EndDate</td>
+                    <td><a asp-area="Admin" asp-controller="Card" asp-action="Delete" asp-route-id="@card.ID">Удалить</a></td>
+                </tr>
                     }
                 </table>
             </div>

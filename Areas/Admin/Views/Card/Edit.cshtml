@@ -15,13 +15,13 @@
                         <div class="new_form_item_head">
                             Выберите тему обращения
                         </div>
-                        <input asp-for="TypeID" class="new_form_item_body">
+                        <input asp-for="TypeCardID" class="new_form_item_body">
                     </div>
                     <div class="new_form_item">
                         <div class="new_form_item_head">
                             Подробное описание проблемы поможет быстрее её решить
                         </div>
-                        <textarea class="new_form_item_body" id="new_form_text">
+                        <textarea asp-for="Text" class="new_form_item_body" id="new_form_text">
 						    </textarea>
                     </div>
                     <div class="new_form_item">

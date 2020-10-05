@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace City.Domain.Entities
 {
@@ -6,5 +7,7 @@ namespace City.Domain.Entities
     {
         [Display(Name = "Организация")]
         public string Name { get; set; }
+
+        public List<Card> Cards { get; set; }
     }
 }

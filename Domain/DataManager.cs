@@ -11,12 +11,14 @@ namespace City.Domain
         public ICardRepository Cards { get; set; }
         public IContactorRepository Contactors { get; set; }
         public IStatusRepository Statuses { get; set; }
+        public ITypeCardRepository TypesCard { get; set; }
 
-        public DataManager(ICardRepository cardRepository, IStatusRepository statusRepository,IContactorRepository contactorRepository)
+        public DataManager(ICardRepository cardRepository, IStatusRepository statusRepository,IContactorRepository contactorRepository, ITypeCardRepository typeCardRepository)
         {
             Cards = cardRepository;
             Contactors = contactorRepository;
             Statuses = statusRepository;
+            TypesCard = typeCardRepository;
         }
     }
 }

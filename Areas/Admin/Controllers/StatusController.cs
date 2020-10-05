@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using City.Domain;
 using City.Domain.Entities;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace City.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CardController : Controller
+    public class StatusController : Controller
     {
+        
         private readonly DataManager dataManager;
-        public CardController(DataManager dataManager)
+
+        public StatusController(DataManager dataManager)
         {
             this.dataManager = dataManager;
         }
@@ -23,26 +22,26 @@ namespace City.Areas.Admin.Controllers
         {
             if (id == default)
             {
-                return View(new Card());
+                return View(new Status());
             }
-            return View(dataManager.Cards.GetCard(id));
+            return View(dataManager.Statuses.GetCard(id));
         }
-        
+
         [HttpPost]
-        public IActionResult Edit(Card card, IFormFile CardFile)
+        public IActionResult Edit(Status card)
         {
             if (ModelState.IsValid)
             {
-                dataManager.Cards.SaveCard(card);
-                return RedirectToAction("Cards", "Home");
+                dataManager.Statuses.SaveCard(card);
+                return RedirectToAction("Statuses", "Home");
             }
             return View(card);
         }
-        
+
         public IActionResult Delete(Guid id)
         {
-            dataManager.Cards.DeleteCard(id);
-            return RedirectToAction("Cards", "Home");
+            dataManager.Statuses.DeleteCard(id);
+            return RedirectToAction("Statuses", "Home");
         }
     }
 }

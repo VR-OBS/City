@@ -4,14 +4,16 @@ using City.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace City.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20201004194801_v1")]
+    partial class v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,6 @@ namespace City.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("TypeCardID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("TypeID")
                         .HasColumnType("uniqueidentifier");
 
@@ -66,11 +65,7 @@ namespace City.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ContractorID");
-
                     b.HasIndex("StatusID");
-
-                    b.HasIndex("TypeCardID");
 
                     b.ToTable("Cards");
                 });
@@ -112,43 +107,13 @@ namespace City.Migrations
                     b.ToTable("Statuses");
                 });
 
-            modelBuilder.Entity("City.Domain.Entities.TypeCard", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("TypesCard");
-                });
-
             modelBuilder.Entity("City.Domain.Entities.Card", b =>
                 {
-                    b.HasOne("City.Domain.Entities.Contractor", "Contractor")
-                        .WithMany("Cards")
-                        .HasForeignKey("ContractorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("City.Domain.Entities.Status", "Status")
                         .WithMany("Cards")
                         .HasForeignKey("StatusID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("City.Domain.Entities.TypeCard", "TypeCard")
-                        .WithMany("Cards")
-                        .HasForeignKey("TypeCardID");
                 });
 #pragma warning restore 612, 618
         }

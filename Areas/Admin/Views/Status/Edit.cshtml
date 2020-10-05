@@ -7,7 +7,7 @@
 <div>
     <h2>@strTitle</h2>
     @await Html.PartialAsync("AdminMenuPartial")
-    <form asp-area="Admin" asp-controller="Home" asp-action="Statuses" method="post" enctype="multipart/form-data">
+    <form asp-area="Admin" asp-controller="Status" asp-action="Edit" method="post" enctype="multipart/form-data">
         <div class="new_form">
             <div asp-validation-summary="All"></div>
             <input asp-for="Name" />

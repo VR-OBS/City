@@ -10,5 +10,6 @@ namespace City.Domain
         public DbSet<Card> Cards { get; set; }
         public DbSet<Contractor> Contractors { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<TypeCard> TypesCard { get; set; }
     }
 }

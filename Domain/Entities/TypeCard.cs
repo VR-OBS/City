@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace City.Domain.Entities
 {
-    public class Status : EntityBase
+    public class TypeCard : EntityBase
     {
-        [Display(Name = "Статус")]
+        [Display(Name = "Тип заявки")]
         public string Name { get; set; }
 
-        [Display(Name = "Описание статуса")]
+        [Display(Name = "Описание типа")]
         public string Description { get; set; }
 
         public List<Card> Cards { get; set; }
