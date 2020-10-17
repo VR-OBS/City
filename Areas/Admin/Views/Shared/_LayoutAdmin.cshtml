@@ -3,11 +3,10 @@
 <head>
     @await Html.PartialAsync("MetatagsPartial")
     @await Html.PartialAsync("CssPartial")
-    @await Html.PartialAsync("ScriptsPartial")
 </head>
 <body>
-    @await Html.PartialAsync("HeadPartial")
+    @await Html.PartialAsync("HeadPartialAdmin")
     @RenderBody()
 </body>
-
+@await Html.PartialAsync("ScriptsPartial")
 </html>

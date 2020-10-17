@@ -12,5 +12,6 @@ namespace City.Domain.Repositories.Abstract
         Card GetCard(Guid id);
         void SaveCard(Card entity);
         void DeleteCard(Guid id);
+        public int GetCount();
     }
 }

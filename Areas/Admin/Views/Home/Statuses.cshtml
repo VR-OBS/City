@@ -5,32 +5,46 @@
 }
 
 <div>
-    <h2>@strTitle</h2>
     @await Html.PartialAsync("AdminMenuPartial")
     
-<div class="wrapper">
+<div class="">
     @if (Model.Any())
     {
-        <div class="result_block_inner">
-            <table border="1">
-                <tr>
-                    <td>Id</td>
-                    <td>Статус</td>
-                    <td>Описание</td>
-                    <td>Дата добавления</td>
-                </tr>
-                @foreach (Status card in Model)
-                {
-                    <tr>
-                        <td>@card.ID</td>
-                        <td>@card.Name</td>
-                        <td>@card.Description</td>
-                        <td>@card.DateAdded</td>
-                    </tr>
-                }
-            </table>
+    <div class="admin_block_inner">
+        <div class="head_admin-table">
+            <div>
 
+            </div>
+            <div class="head_admin-table_head">
+                Статусы
+            </div>
+            <div>
+                <a class="menu_item_href add_card" asp-area="Admin" asp-controller="Status" asp-action="Edit" asp-route-id="">Добавить карточку</a>
+            </div>
         </div>
+        <table class="service_table t6_col">
+            <tr>
+                <th>Id</th>
+                <th>Статус</th>
+                <th>Описание</th>
+                <th>Дата добавления</th>
+                <th>Удалить</th>
+                <th>Изменить</th>
+            </tr>
+            @foreach (Status card in Model)
+            {
+                <tr>
+                    <td>@card.ID</td>
+                    <td>@card.Name</td>
+                    <td>@card.Description</td>
+                    <td>@card.DateAdded</td>
+                    <td><a asp-area="Admin" asp-controller="Status" asp-action="Delete" asp-route-id="@card.ID">Удалить</a></td>
+                    <td><a asp-area="Admin" asp-controller="Status" asp-action="Edit" asp-route-id="@card.ID">Изменить</a></td>
+                </tr>
+            }
+        </table>
+
+    </div>
     }
     <a asp-area="Admin" asp-controller="Status" asp-action="Edit" asp-route-id="">Добавить</a>
 </div>

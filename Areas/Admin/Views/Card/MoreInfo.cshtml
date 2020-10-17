@@ -1,43 +1,62 @@
 ﻿@model Card
 @{
-    ViewBag.Title = "Редактирование заявки";
+    ViewBag.Title = "Заявка № "+ Model.ID;
 }
 <div class="new_main_block">
     <div class="new_main_block_inner">
-        <h1>Заявка</h1>
+        <h1>Заявка № @Model.ID</h1>
         <form asp-area="Admin" asp-controller="Card" asp-action="Edit" method="post" enctype="multipart/form-data">
             <div class="new_form">
-                <input type="hidden" asp-for="ID" />
-                <input type="hidden" asp-for="DateAdded" />
                 <div asp-validation-summary="All"></div>
                 <div class="new_form_col">
                     <div class="new_form_item">
                         <div class="new_form_item_head">
-                            Выберите тему обращения
+                            Тема
                         </div>
-                        <input asp-for="TypeCardID" class="new_form_item_body">
+                        <div>@Model.TypeCard.Name</div>
                     </div>
 
                     <div class="new_form_item">
                         <div class="new_form_item_head">
                             Статус заявки
                         </div>
-                        <input asp-for="StatusID" class="new_form_item_body">
+                        <div>
+                            @Model.Status.Name
+                        </div>
                     </div>
 
 
                     <div class="new_form_item">
                         <div class="new_form_item_head">
-                            Подробное описание проблемы поможет быстрее её решить
+                            Описание заявителя
                         </div>
-                        <textarea asp-for="Text" class="new_form_item_body" id="new_form_text">
-						    </textarea>
+                        <textarea class="new_form_item_body" id="new_form_text">
+                            @Model.Text
+						</textarea>
                     </div>
                     <div class="new_form_item">
                         <div class="new_form_item_head">
                             Фотографии позволят лучше понять проблему
                         </div>
                         <input type="file" name="CardFile" id="CardFile">
+                    </div>
+
+                    <div class="new_form_item">
+                        <div class="new_form_item_head">
+                            Исполнитель
+                        </div>
+                        <div>
+                            @Model.Contractor.Name
+                        </div>
+                    </div>
+
+                    <div class="new_form_item">
+                        <div class="new_form_item_head">
+                            Срок выполнения
+                        </div>
+                        <div>
+                            @Model.EndDate
+                        </div>
                     </div>
                 </div>
 
@@ -52,9 +71,11 @@
                     </div>
                     <div class="new_form_item new_form_item_adr">
                         <div class="new_form_item_head">
-                            или написать адрес (приблизительный ориентир)
+                            Адрес
                         </div>
-                        <input asp-for="Address" class="new_form_item_body">
+                        <div>
+                            @Model.Address
+                        </div>
                     </div>
                 </div>
 
@@ -62,7 +83,7 @@
 
             <div class="submit_new_form">
                 <div class="btn314">
-                    <button type="submit" class="btn314" href="/Card/New">Измениить</button>
+                    <a class="btn314" href="/Admin/Home/Cards">Назад</a>
 
                 </div>
             </div>

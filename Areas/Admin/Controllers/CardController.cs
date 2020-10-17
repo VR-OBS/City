@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using City.Domain;
+﻿using City.Domain;
 using City.Domain.Entities;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace City.Areas.Admin.Controllers
 {
@@ -25,9 +20,9 @@ namespace City.Areas.Admin.Controllers
             {
                 return View(new Card());
             }
-            return View(dataManager.Cards.GetCard(id));
+            return View("MoreInfo",dataManager.Cards.GetCard(id));
         }
-        
+
         [HttpPost]
         public IActionResult Edit(Card card, IFormFile CardFile)
         {
@@ -38,11 +33,17 @@ namespace City.Areas.Admin.Controllers
             }
             return View(card);
         }
-        
+
         public IActionResult Delete(Guid id)
         {
             dataManager.Cards.DeleteCard(id);
             return RedirectToAction("Cards", "Home");
+        }
+
+        public IActionResult MoreInfo()
+        {
+            Card qwe = dataManager.Cards.GetCard(new Guid("8cdddd0b-0419-412d-f6fe-08d86bc94b80"));
+            return View(qwe);
         }
     }
 }

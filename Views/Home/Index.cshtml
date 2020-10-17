@@ -19,6 +19,16 @@
                 <a id="start_block_btn_spanMore" href="#">Подробнее</a>
             </div>
         </div>
+        <div class="static_block">
+            <div class="start_block_item">
+                <div>Общее количество заявок</div>
+                <div>@ViewBag.Num</div>
+            </div>
+            <div class="start_block_item">
+                <div>Количество исполненных заявок</div>
+                <div>@ViewBag.Num1</div>
+            </div>
+        </div>
         <div class="btn380 viewResult">
             <a id="viewResult_span" href="#">
                 Посмотреть результаты
@@ -68,11 +78,25 @@
 
                             <div class="result_block_item_footer">
                                 <div class="result_block_item_footer_status">
-                                    Статус заявки
+                                    <div class="@{switch (Convert.ToString(card.StatusID))
+                                        {
+                                                 case "00000000-0000-0000-0000-000000000001":
+                                                     @:borderClr_red
+                                                         break;
+                                                 case "00000000-0000-0000-0000-000000000002":
+                                                     @:borderClr_yellow
+                                                         break;
+                                                case "00000000-0000-0000-0000-000000000003":
+                                                     @:borderClr_green
+                                                         break;
+                                        }} result_block_item_footer_status_img"></div>
+                                    <div class="result_block_item_footer_status_text">
+                                        @card.Status.Name
+                                    </div>
                                 </div>
                                 <div class="result_block_item_footer_btn">
                                     <div class="btn314 viewMore">
-                                        <a asp-area="" asp-controller="Card" asp-action="VievMore" asp-route-id="@card.ID">Узнать подробнее</a>
+                                        <a asp-area="" asp-controller="Card" asp-action="More" asp-route-id="@card.ID">Узнать подробнее</a>
                                     </div>
                                 </div>
                             </div>

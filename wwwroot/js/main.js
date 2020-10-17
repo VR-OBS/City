@@ -1,4 +1,5 @@
 var map;
+var marker
 DG.then(function() {
     
 
@@ -6,21 +7,16 @@ DG.then(function() {
         center: [54.514, 36.260],
         zoom: 9,
         fullscreenControl: false,
-        zoomControl: false
+        zoomControl: false,
+        poi: false
     });
 
-    map.locate({setView: true, watch: true})
-        .on('locationfound', function(e) {
-          	info.innerHTML=`Широта в градусах.: ${e.latlng.lat} </br>
-    	Долгота в градусах.: ${e.latlng.lng} </br>
-    	Высота в метрах (опционально).: ${e.latlng.alt} </br>
-		Точность определения местоположения в метрах.: ${e.accuracy} </br>
-		Высота над поверхностью земли в метрах, согласно координатной системе WGS84.: ${e.altitude} </br>
-		Точность определения высоты в метрах.: ${e.altitudeAccuracy	} </br>
-		Направление движения в градусах, считается с севера, в направлении по часовой стрелке.: ${e.heading} </br>
-		Скорость в метрах в секунду.: ${e.speed	} </br>
-		Момент времени измерения местоположения.: ${e.timestamp} </br>
-    	`;	
+    map.locate({setView: true, watch: false})
+        .on('locationfound', function (e)
+        {
+            marker = DG.marker([e.latitude, e.longitude]).addTo(map);    
+            Card_Pos_X.value = e.latlng.lat;
+            Card_Pos_Y.value = e.latlng.lng;
         })
         .on('locationerror', function(e) {
             DG.popup()
@@ -29,18 +25,9 @@ DG.then(function() {
               .openOn(map);
         });
 
-    map.on('click', function(e){
-    	info.innerHTML=`Широта в градусах.: ${e.latlng.lat} </br>
-    	Долгота в градусах.
-: ${e.latlng.lng} </br>
-    	Высота в метрах (опционально).
-: ${e.latlng.alt} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>
-    	Широта в градусах.: ${e.latlng.lat} </br>`;
+    map.on('click', function (e) {
+        marker.setLatLng([e.latlng.lat, e.latlng.lng]);
+        Card_Pos_X.value = e.latlng.lat;
+        Card_Pos_Y.value = e.latlng.lng;
     });
 });

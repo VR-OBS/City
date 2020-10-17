@@ -1,36 +1,39 @@
-﻿@model Card
+﻿@model CardViewModel
 @{
-    ViewBag.Title = "Редактирование заявки";
+    ViewBag.Title = "Создание заявки";
 }
 <div class="new_main_block">
     <div class="new_main_block_inner">
         <h1>Заявка</h1>
-        <form asp-area="Admin" asp-controller="Card" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-area="" asp-controller="Card" asp-action="New" method="post" enctype="multipart/form-data">
             <div class="new_form">
-                <input type="hidden" asp-for="ID" />
-                <input type="hidden" asp-for="DateAdded" />
                 <div asp-validation-summary="All"></div>
                 <div class="new_form_col">
                     <div class="new_form_item">
                         <div class="new_form_item_head">
                             Выберите тему обращения
                         </div>
-                        <input asp-for="TypeCardID" class="new_form_item_body">
+                        <select asp-for="Card.TypeCardID" name="TypeID" class="new_form_item_body">
+                            @foreach (TypeCard type in Model.TypesCard)
+                            {
+                                <option value="@type.ID">@type.Name</option>
+                            }
+                        </select>
                     </div>
 
-                    <div class="new_form_item">
+                    @*<div class="new_form_item">
                         <div class="new_form_item_head">
                             Статус заявки
                         </div>
-                        <input asp-for="StatusID" class="new_form_item_body">
-                    </div>
+                        <input asp-for="Card.StatusID" class="new_form_item_body">
+                    </div>*@
 
 
                     <div class="new_form_item">
                         <div class="new_form_item_head">
                             Подробное описание проблемы поможет быстрее её решить
                         </div>
-                        <textarea asp-for="Text" class="new_form_item_body" id="new_form_text">
+                        <textarea asp-for="Card.Text" class="new_form_item_body" id="new_form_text">
 						    </textarea>
                     </div>
                     <div class="new_form_item">
@@ -46,6 +49,8 @@
                         <div id="info" class="new_form_item_head">
                             Можно отметить место на карте
                         </div>
+                        <input hidden asp-for="Card.Pos_X" />
+                        <input hidden asp-for="Card.Pos_Y" />
                         <div id="map" class="new_form_map">
 
                         </div>
@@ -54,7 +59,7 @@
                         <div class="new_form_item_head">
                             или написать адрес (приблизительный ориентир)
                         </div>
-                        <input asp-for="Address" class="new_form_item_body">
+                        <input asp-for="Card.Address" class="new_form_item_body">
                     </div>
                 </div>
 

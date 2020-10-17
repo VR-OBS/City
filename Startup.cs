@@ -28,7 +28,7 @@ namespace City
             Configuration.Bind("Project", new Config());
 
             services.AddTransient<ICardRepository, EFCardRepository>();
-            services.AddTransient<IContactorRepository, EFContactorRepository>();
+            services.AddTransient<IContractorRepository, EFContractorRepository>();
             services.AddTransient<IStatusRepository, EFStatusRepository>();
             services.AddTransient<ITypeCardRepository, EFTypeCardRepository>();
             services.AddTransient<DataManager>();

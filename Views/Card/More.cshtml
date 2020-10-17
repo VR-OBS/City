@@ -1,0 +1,67 @@
+﻿@model Card
+
+    <div class="result_block">
+        <div class="wrapper">
+            <div class="result_block_inner ">
+                <h2>Информация о заявке</h2>
+
+                <div class="result_block_item block_item_more">
+                    <div class="block_item_more_item">
+                        <h3>@Model.Address</h3>
+                        <div class="result_block_item_card_num">
+                            <p class="card_num_name">Номер заявки:</p>
+                            <span class="card_num_num">@Model.ID</span>
+                        </div>
+
+                        <div class="result_block_item_photo_block">
+                            <div class="photo">
+                                Было
+                                <img id="1" src="~/images/Kaluga1.png">
+                            </div>
+                            <div class="photo">
+                                Стало
+                                <img src="~/images/Kaluga1.png">
+                            </div>
+                        </div>
+
+                        <div class="result_block_item_description_block">
+                            <div class="result_block_item_description_block_head">
+                                Описание проблемы
+                            </div>
+                            <div class="result_block_item_description_block_body">
+                                @Model.Text
+                            </div>
+                        </div>
+
+                        <div class="result_block_item_description_block">
+                            <div class="result_block_item_description_block_head">
+                                Комментарий исполнителя
+                            </div>
+                            <div class="result_block_item_description_block_body">
+                                фывапргшлджиомьпаыквпргшщждлбоптиса мпрнгогьщглр оавмаеу5п6ргшщдрлбитмсвар657б76гьвтеиамавиткевтаимпмвкеарт иувкеангот рмвпкренортипцыквеапнртимыкеи вгер пар оапаыыыавпнерк пттреквпампрьортпавыапронепавпропавсчмпропа купаеро на апспропраисеанрпм
+                            </div>
+                        </div>
+
+                        <div class="result_block_item_footer foother_more">
+                            <div class="result_block_item_footer_btn foother_more_bth">
+                                <div class="btn314 viewMore bth_border">
+                                    <a asp-action="index" asp-controller="home">Назад</a>
+                                </div>
+                            </div>
+
+                            <div class="result_block_item_footer_btn foother_more_bth">
+                                <div class="btn314 viewMore">
+                                    <a href="#">Оставить комментарий</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="block_item_more_item">
+                        Статус
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

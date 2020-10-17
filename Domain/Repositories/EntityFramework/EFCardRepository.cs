@@ -24,7 +24,11 @@ namespace City.Domain.Repositories.EntityFramework
 
         public Card GetCard(Guid id)
         {
-            return context.Cards.FirstOrDefault(x => x.ID == id);
+            return context.Cards
+                .Include(u => u.Status)
+                .Include(u => u.Contractor)
+                .Include(u => u.TypeCard)
+                .FirstOrDefault(x => x.ID == id);
         }
 
         public IQueryable<Card> GetCards()
@@ -46,6 +50,11 @@ namespace City.Domain.Repositories.EntityFramework
                 context.Entry(entity).State = EntityState.Modified;
             }
             context.SaveChanges();
+        }
+
+        public int GetCount()
+        {
+            return context.Cards.Count();
         }
     }
 }

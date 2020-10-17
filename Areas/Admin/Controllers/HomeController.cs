@@ -32,6 +32,15 @@ namespace City.Areas.Admin.Controllers
             return View(dataManager.Statuses.GetCards());
         }
 
+        public IActionResult TypesCard()
+        {
+            return View(dataManager.TypesCard.GetCards());
+        }
+
+        public IActionResult Contractors()
+        {
+            return View(dataManager.Contractors.GetCards());
+        }
 
     }
 }

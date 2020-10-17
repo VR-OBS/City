@@ -1,0 +1,24 @@
+﻿@model TypeCard
+@{
+    string strTitle = "Администратор ппвнель";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    @await Html.PartialAsync("AdminMenuPartial")
+    <form asp-area="Admin" asp-controller="TypeCard" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="new_form">
+            <div asp-validation-summary="All"></div>
+            <input asp-for="Name" />
+            <input asp-for="Description" />
+        </div>
+
+        <div class="submit_new_form">
+            <div class="btn314">
+                <button type="submit" class="btn314">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>
+

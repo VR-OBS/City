@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace City.Domain.Repositories.EntityFramework
 {
-    public class EFContactorRepository : IContactorRepository
+    public class EFContractorRepository : IContractorRepository
     {
         private readonly AppDBContext context;
-        public EFContactorRepository(AppDBContext context)
+        public EFContractorRepository(AppDBContext context)
         {
             this.context = context;
         }

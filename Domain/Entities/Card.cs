@@ -9,6 +9,14 @@ namespace City.Domain.Entities
 {
     public class Card : EntityBase
     {
+
+        public Card()
+        {
+            TypeCardID = new Guid("00000000000000000000000000000001");
+            StatusID = new Guid("00000000000000000000000000000001");
+            ManagerID = new Guid("00000000000000000000000000000001");
+            ContractorID = new Guid("00000000000000000000000000000001");
+        }
         [Display(Name = "Тип Заявки")]
         public Guid TypeCardID { get; set; }
         public TypeCard TypeCard { get; set; }
@@ -31,10 +39,11 @@ namespace City.Domain.Entities
 
         [Display(Name = "Ответственный")]
         public Guid ManagerID { get; set; }
-        public Contractor Contractor { get; set; }
+        
 
         [Display(Name = "Исполнитель")]
         public Guid ContractorID { get; set; }
+        public Contractor Contractor { get; set; }
 
         [Display(Name = "Заявитель")]
         public Guid UserID { get; set; }

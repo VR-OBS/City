@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using City.Domain;
 using City.Domain.Entities;
+using City.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -24,14 +25,25 @@ namespace CityTest.Controllers
         }
         public IActionResult New()
         {
-            var card = new Card();
-            card.Pos_X = "0";
-            card.Pos_Y = "0";
-            card.Text = "testc";
-            card.Address = "Kaluga";
-            dataManager.Cards.SaveCard(card);
+            CardViewModel model = new CardViewModel { Card = new Card(), TypesCard = dataManager.TypesCard.GetCards() };
+            return View(model);
+        }
 
-            return RedirectToAction("Index", "Home");
+        [HttpPost]
+        public IActionResult New(CardViewModel model, Guid TypeID)
+        {
+            model.Card.TypeCardID=TypeID;
+            if (ModelState.IsValid)
+            {
+                dataManager.Cards.SaveCard(model.Card);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+        }
+
+        public IActionResult More(Guid id)
+        {
+            return View(dataManager.Cards.GetCard(id));
         }
     }
 }

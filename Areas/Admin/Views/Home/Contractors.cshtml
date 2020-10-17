@@ -1,0 +1,51 @@
+﻿@model IQueryable<Contractor>
+@{
+    string strTitle = "Администратор ппвнель";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    @await Html.PartialAsync("AdminMenuPartial")
+
+    <div class="">
+        @if (Model.Any())
+        {
+        <div class="admin_block_inner">
+            <div class="head_admin-table">
+                <div>
+
+                </div>
+                <div class="head_admin-table_head">
+                    Исполнители
+                </div>
+                <div>
+                    <a class="menu_item_href add_card" asp-area="Admin" asp-controller="Contractor" asp-action="Edit" asp-route-id="">Добавить карточку</a>
+                </div>
+            </div>
+            <table class="service_table t5_col">
+                <tr>
+                    <th>Id</th>
+                    <th>Исполнитель</th>
+                    <th>Дата добавления</th>
+                    <th>Удалить</th>
+                    <th>Изменить</th>
+                </tr>
+                @foreach (Contractor card in Model)
+                {
+                    <tr>
+                        <td>@card.ID</td>
+                        <td>@card.Name</td>
+                        <td>@card.DateAdded</td>
+                        <td><a asp-area="Admin" asp-controller="Contractor" asp-action="Delete" asp-route-id="@card.ID">Удалить</a></td>
+                        <td><a asp-area="Admin" asp-controller="Contractor" asp-action="Edit" asp-route-id="@card.ID">Изменить</a></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+        }
+        <a asp-area="Admin" asp-controller="Contractor" asp-action="Edit" asp-route-id="">Добавить</a>
+    </div>
+
+</div>
+

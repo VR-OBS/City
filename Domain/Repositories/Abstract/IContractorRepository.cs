@@ -6,7 +6,7 @@ using City.Domain.Entities;
 
 namespace City.Domain.Repositories.Abstract
 {
-    public interface IContactorRepository
+    public interface IContractorRepository
     {
         IQueryable<Contractor> GetCards();
         Contractor GetCard(Guid id);
