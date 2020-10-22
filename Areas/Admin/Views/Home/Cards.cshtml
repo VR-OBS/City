@@ -48,7 +48,7 @@
                             <td>@card.ManagerID</td>
                             <td>@card.Contractor.Name</td>
                             <td>@card.EndDate</td>
-                            <td><a asp-area="Admin" asp-controller="Card" asp-action="Delete" asp-route-id="@card.ID">Удалить</a></td>
+                            <td><form method="post" asp-area="Admin" asp-controller="Card" asp-action="Delete" asp-route-id="@card.ID"><button class="btn_delete" type="submit"><img src="~/images/delete.png" /></button> </form></td>
                             <td><a asp-area="Admin" asp-controller="Card" asp-action="Edit" asp-route-id="@card.ID">Изменить</a></td>
                         </tr>
                     }

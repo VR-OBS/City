@@ -11,5 +11,8 @@ namespace City.Domain
         public DbSet<Contractor> Contractors { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<TypeCard> TypesCard { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
+
     }
 }

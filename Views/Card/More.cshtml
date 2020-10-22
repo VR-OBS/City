@@ -59,6 +59,37 @@
                     </div>
                     <div class="block_item_more_item">
                         Статус
+                        <div class="result_block_item_footer_status more_status">
+                            <div class="borderClr_green result_block_item_footer_status_img @{ if (Model.Status.Name!="исполнено")
+                                {
+                                    @:deactive
+                                } }">
+
+                            </div>
+                            <div class="result_block_item_footer_status_text">
+                                Исполнено
+                            </div>
+                        </div>
+                        <div class="result_block_item_footer_status more_status">
+                            <div class="borderClr_yellow result_block_item_footer_status_img @{ if (Model.Status.Name!="на исполнении" & Model.Status.Name!="исполнено")
+                                {
+                                    @:deactive
+                                } }">
+                            </div>
+                            <div class="result_block_item_footer_status_text">
+                                На исполнении
+                            </div>
+                        </div>
+                        <div class="result_block_item_footer_status more_status">
+                            <div class="borderClr_red result_block_item_footer_status_img @{ if (Model.Status.Name!="принято" & Model.Status.Name!="на исполнении" & Model.Status.Name!="исполнено")
+                                {
+                                    @:deactive
+                                } }">
+                            </div>
+                            <div class="result_block_item_footer_status_text">
+                                Принято
+                            </div>
+                        </div>
                     </div>
                 </div>
 

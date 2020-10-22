@@ -1,92 +1,103 @@
-﻿@model Card
+﻿@model CardViewModel
 @{
-    ViewBag.Title = "Заявка № "+ Model.ID;
+	ViewBag.Title = "Заявка № "+ Model.Card.ID;
 }
 <div class="new_main_block">
-    <div class="new_main_block_inner">
-        <h1>Заявка № @Model.ID</h1>
-        <form asp-area="Admin" asp-controller="Card" asp-action="Edit" method="post" enctype="multipart/form-data">
-            <div class="new_form">
-                <div asp-validation-summary="All"></div>
-                <div class="new_form_col">
-                    <div class="new_form_item">
-                        <div class="new_form_item_head">
-                            Тема
-                        </div>
-                        <div>@Model.TypeCard.Name</div>
-                    </div>
+	<div class="new_main_block_inner">
+		<h1>Заявка № @Model.Card.ID</h1>
+		<form asp-area="Admin" asp-controller="Card" asp-action="Edit" method="post" enctype="multipart/form-data">
+		   
+			<div class="new_form">
+				<div asp-validation-summary="All"></div>
+				
+				<div class="new_form_col">
+					<div class="new_form_item">
+						<div class="new_form_item_head">
+							Тема
 
-                    <div class="new_form_item">
-                        <div class="new_form_item_head">
-                            Статус заявки
-                        </div>
-                        <div>
-                            @Model.Status.Name
-                        </div>
-                    </div>
+						</div>
+						<input hidden class="new_form_item_body" asp-for="Card.ID" />
+						<select asp-for="Card.TypeCardID" asp-items="Model.TypesCard" class="new_form_item_body">
+						</select>
+					</div>
+
+					<div class="new_form_item">
+						<div class="new_form_item_head">
+							Статус заявки
+						</div>
+						<div>
+							<select asp-for="Card.StatusID" asp-items="Model.Statuses" class="new_form_item_body">
+							</select>
+						</div>
+					</div>
 
 
-                    <div class="new_form_item">
-                        <div class="new_form_item_head">
-                            Описание заявителя
-                        </div>
-                        <textarea class="new_form_item_body" id="new_form_text">
-                            @Model.Text
+					<div class="new_form_item">
+						<div class="new_form_item_head">
+							Описание заявителя
+						</div>
+						<textarea disabled class="new_form_item_body" id="new_form_text">
+							@Model.Card.Text
 						</textarea>
-                    </div>
-                    <div class="new_form_item">
-                        <div class="new_form_item_head">
-                            Фотографии позволят лучше понять проблему
-                        </div>
-                        <input type="file" name="CardFile" id="CardFile">
-                    </div>
+					</div>
+					<div class="new_form_item">
+						<div class="new_form_item_head">
+							Фотографии позволят лучше понять проблему
+						</div>
+						<input type="file" name="CardFile" id="CardFile">
+					</div>
 
-                    <div class="new_form_item">
-                        <div class="new_form_item_head">
-                            Исполнитель
-                        </div>
-                        <div>
-                            @Model.Contractor.Name
-                        </div>
-                    </div>
+					<div class="new_form_item">
+						<div class="new_form_item_head">
+							Исполнитель
+						</div>
+						<div>
+							<select asp-for="Card.ContractorID" asp-items="Model.Contractors" class="new_form_item_body">
+								</select>
+						</div>
+					</div>
 
-                    <div class="new_form_item">
-                        <div class="new_form_item_head">
-                            Срок выполнения
-                        </div>
-                        <div>
-                            @Model.EndDate
-                        </div>
-                    </div>
-                </div>
+					<div class="new_form_item">
+						<div class="new_form_item_head">
+							Срок выполнения
+						</div>
+						<div>
+							<input asp-for="Card.EndDate" />
+						</div>
+					</div>
+				</div>
 
-                <div class="new_form_col">
-                    <div class="new_form_item">
-                        <div id="info" class="new_form_item_head">
-                            Можно отметить место на карте
-                        </div>
-                        <div id="map" class="new_form_map">
+				<div class="new_form_col">
+					<div class="new_form_item">
+						<input hidden asp-for="Card.Pos_X" />
+                        <input hidden asp-for="Card.Pos_Y" />
+						<div id="info" class="new_form_item_head">
+							Можно отметить место на карте
+						</div>
+						<div id="map" class="new_form_map">
 
-                        </div>
-                    </div>
-                    <div class="new_form_item new_form_item_adr">
-                        <div class="new_form_item_head">
-                            Адрес
-                        </div>
-                        <div>
-                            @Model.Address
-                        </div>
-                    </div>
-                </div>
+						</div>
+					</div>
+					<div class="new_form_item new_form_item_adr">
+						<div class="new_form_item_head">
+							Адрес
+						</div>
+						<div>
+							@Model.Card.Address
+						</div>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="submit_new_form">
-                <div class="btn314">
-                    <a class="btn314" href="/Admin/Home/Cards">Назад</a>
-
-                </div>
-            </div>
-        </form>
-    </div>
+			<div class="submit_new_form">
+				<div class="btn314">
+					<a class="btn314" href="/Admin/Home/Cards">Назад</a>
+				</div>
+				<div class="btn314">
+					<button type="submit" class="btn314">ОК</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>

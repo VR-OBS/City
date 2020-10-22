@@ -13,11 +13,11 @@
                         <div class="new_form_item_head">
                             Выберите тему обращения
                         </div>
-                        <select asp-for="Card.TypeCardID" name="TypeID" class="new_form_item_body">
-                            @foreach (TypeCard type in Model.TypesCard)
+                        <select asp-for="Card.TypeCardID" asp-items="Model.TypesCard" class="new_form_item_body">
+                            @*@foreach (TypeCard type in Model.TypesCard)
                             {
                                 <option value="@type.ID">@type.Name</option>
-                            }
+                            }*@
                         </select>
                     </div>
 
@@ -40,7 +40,7 @@
                         <div class="new_form_item_head">
                             Фотографии позволят лучше понять проблему
                         </div>
-                        <input type="file" name="CardFile" id="CardFile">
+                        <input type="file" name="CardPhoto" id="CardFile">
                     </div>
                 </div>
 

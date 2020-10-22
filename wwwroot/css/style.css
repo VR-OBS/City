@@ -75,6 +75,18 @@ span {
 	justify-content: center;
 }
 
+.btn_delete {
+	height: 20px;
+	width: 20px;
+	border: 0;
+	background: 0;
+}
+
+.btn_delete img{
+	height:100%;
+}
+
+
 .wrapper {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -193,16 +205,25 @@ span {
 
 .static_block {
 	background-color: #C4C4C432 ;
+	
+	width: 90%;
+	
+	margin-top: 120px;
+	
+	
+	text-align: center;
+	font-weight: bolder;
+	margin: 120px auto 0px;
+}
+
+.static_block_inner {
 	display: flex;
 	align-self: center;
-	width: 90%;
 	justify-content: space-around;
-	margin-top: 120px;
 	font-size: 50px;
 	color: white;
 	flex-grow: 1;
-	text-align: center;
-	font-weight: bolder;
+	margin:30px;
 }
 
 .static_block_item {
@@ -266,6 +287,7 @@ span {
 }
 
 .photo {
+	max-height:280px;
 	width: 50%;
 	height: calc(width*0.5625);
 	margin-right: 10px;
@@ -301,9 +323,9 @@ span {
 }
 
 .result_block_item_footer_status_img {
-	height: 20px;
-	width: 20px;
-	margin-right:5px;
+	min-height: 20px;
+	min-width: 20px;
+	margin-right:15px;
 	border-radius: 100%;
 }
 
@@ -432,7 +454,7 @@ span {
 	.block_item_more_item:last-child {
 		border: 0px;
 		padding-right: 0px;
-		width: 15%;
+		width: 20%;
 		padding-left: 20px
 	}
 
@@ -467,6 +489,14 @@ span {
 .bth_border {
 	background: 0;
 	border: 2px solid #FFFCB4;
+}
+
+.more_status{
+	margin-top:40px;
+}
+
+.deactive{
+	border-color: gray;
 }
 
 /***********service_table***************/

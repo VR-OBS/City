@@ -1,4 +1,5 @@
 ﻿using City.Domain.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +11,10 @@ namespace City.Models
     public class CardViewModel
     {
         public Card Card { get; set; }
-        public IEnumerable<TypeCard> TypesCard { get; set; }
+        public SelectList TypesCard { get; set; }
+
+        public SelectList Statuses { get; set; }
+
+        public SelectList Contractors { get; set; }
     }
 }

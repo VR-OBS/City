@@ -31,6 +31,8 @@ namespace City
             services.AddTransient<IContractorRepository, EFContractorRepository>();
             services.AddTransient<IStatusRepository, EFStatusRepository>();
             services.AddTransient<ITypeCardRepository, EFTypeCardRepository>();
+            services.AddTransient<IRoleRepository, EFRoleRepository>();
+            services.AddTransient<IUserRepository, EFUserRepository>();
             services.AddTransient<DataManager>();
 
             //подкльчение контекста базы данных

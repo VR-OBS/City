@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Hosting.Internal;
 
 namespace CityTest.Controllers
@@ -18,23 +19,32 @@ namespace CityTest.Controllers
     public class CardController : Controller
     {
         private readonly DataManager dataManager;
+        IWebHostEnvironment _appEnvironment;
 
-        public CardController(DataManager dataManager)
+        public CardController(DataManager dataManager, IWebHostEnvironment appEnvironment)
         {
             this.dataManager = dataManager;
+            this._appEnvironment = appEnvironment;
         }
         public IActionResult New()
         {
-            CardViewModel model = new CardViewModel { Card = new Card(), TypesCard = dataManager.TypesCard.GetCards() };
+            CardViewModel model = new CardViewModel { Card = new Card(), TypesCard = new SelectList(dataManager.TypesCard.GetCards(), "ID", "Name") };
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult New(CardViewModel model, Guid TypeID)
+        public IActionResult New(CardViewModel model, IFormFile CardPhoto)
         {
-            model.Card.TypeCardID=TypeID;
             if (ModelState.IsValid)
             {
+                if (CardPhoto != null)
+                {
+                    model.Card.PhotoPath = Guid.NewGuid()+"";
+                    using (var fileStream = new FileStream(Path.Combine(_appEnvironment.WebRootPath, "CardImages/", model.Card.PhotoPath+"_before.jpg"), FileMode.Create))
+                    {
+                        CardPhoto.CopyTo(fileStream);
+                    }
+                }
                 dataManager.Cards.SaveCard(model.Card);
                 return RedirectToAction("Index", "Home");
             }

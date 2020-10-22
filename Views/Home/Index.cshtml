@@ -20,13 +20,15 @@
             </div>
         </div>
         <div class="static_block">
-            <div class="start_block_item">
-                <div>Общее количество заявок</div>
-                <div>@ViewBag.Num</div>
-            </div>
-            <div class="start_block_item">
-                <div>Количество исполненных заявок</div>
-                <div>@ViewBag.Num1</div>
+            <div class="static_block_inner">
+                <div class="start_block_item">
+                    <div>Общее количество заявок</div>
+                    <div>@ViewBag.Num</div>
+                </div>
+                <div class="start_block_item">
+                    <div>Количество исполненных заявок</div>
+                    <div>@ViewBag.Num1</div>
+                </div>
             </div>
         </div>
         <div class="btn380 viewResult">
@@ -66,13 +68,25 @@
                             <div class="result_block_item_photo_block">
                                 <div class="photo">
                                     Было
-                                    <img id="1" src="~/images/@ViewBag.IDD">
+                                    <img id="1" src="~/CardImages/@{ if (@card.PhotoPath != null)
+                                        {
+                                            @card.PhotoPath@:_before.jpg
+                                        }
+                                        else
+                                        {@:no_photo.jpg
+                                        } }">
                                 </div>
 
 
                                 <div class="photo">
                                     Стало
-                                    <img src="~/images/Kaluga1.png">
+                                    <img src="~/CardImages/@{ if (@card.PhotoPath != null)
+                                        {
+                                            @card.PhotoPath@:_after.jpg
+                                        }
+                                        else
+                                        {@:no_photo.jpg
+                                        } }">
                                 </div>
                             </div>
 

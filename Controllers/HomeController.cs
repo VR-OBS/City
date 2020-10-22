@@ -20,7 +20,7 @@ namespace City.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.Num1 = dataManager.Cards.GetCards().Where(p => p.StatusID == new Guid("00000000000000000000000000000001")).Count();
+            ViewBag.Num1 = dataManager.Cards.GetCards().Where(p => p.StatusID == new Guid("00000000000000000000000000000003")).Count();
             ViewBag.Num = dataManager.Cards.GetCards().Count();
             return View(dataManager.Cards.GetCards());
         }
